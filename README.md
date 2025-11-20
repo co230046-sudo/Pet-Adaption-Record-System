@@ -1,61 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Pet-Adaption-Record-System
+A simple website that aims to monitor and add list of pets who are in need of adaption.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1. What is my chosen framework?
+My project uses the Laravel framework, which is a PHP-based web development framework that follows the Model–View–Controller (MVC) architectural pattern. Throughout this semester, I learned that Laravel provides many built-in tools that make development easier—such as page routing, database migrations for constructing tables, and Eloquent ORM which makes database interaction smooth and organized.
+Because of these features, Laravel is a good fit for my Pet Adoption website, especially since it involves CRUD operations.
 
-## About Laravel
+2. How the MVC Components Are Organized?
+First, the Model:
+-My main model is Pet.php, which represents the pets table in the database.
+-It uses Eloquent ORM and defines fillable fields such as pet_name, species, age, status, and timestamps.
+-It handles all database interactions like creating, updating, retrieving, and fetching pet records.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Second, the View:
+-My views (or pages) are located inside the resources/views folder.
+-I used Blade templates to display and format the data coming from the controller.
+-The main pages I created are:
+1.add_pet.blade.php
+2,display_pets.blade.php
+3.edit_pet.blade.php
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Third, the Controller:
+-My controller is called PetController.php, which manages all CRUD operations and other functionalities of the system.
+-Here are the functions used to make the system work:
+1.index() – Displays all pets and handles searching using keywords.
+2.create() – Shows the form for adding a new pet.
+3.store() – Saves the newly added pet to the database.
+4.edit() – Displays the edit form for a specific pet.
+5.update() – Applies updated information to the selected pet in the database.
+6.destroy() – Deletes a selected pet from the database.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. How a User Interacts With the App?
+1.Pet List (Homepage):
+The homepage shows a table of all pets stored in the database, along with their details and their status (Available or Adopted).
+2.Searching:
+Users can search for a pet using the search input field. They can type keywords such as the pet’s name, species, age, or status.
+The index() function handles the search by filtering pets based on the keyword entered.
+3.Adding a Pet:
+When the user clicks the “Add Pet” button, they are redirected to a form. After filling it out and submitting, the store() function saves the new pet to the database, while the model ensures the inputs are valid.
+4.Editing a Pet:
+The user can click “Edit” on any pet in the list. This opens another form where the user can update its details. The update() function finds the selected pet by its ID and updates the values in the database.
+5.Deleting a Pet:
+The user may click the “Delete” button to remove a pet from the list. The destroy() function identifies the record by its ID and permanently deletes it from the database.
+6.Viewing Status:
+Each pet has a status column showing whether it is Available or Adopted, allowing users to easily see which pets are still up for adoption.
